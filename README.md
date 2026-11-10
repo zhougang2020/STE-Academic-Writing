@@ -1,16 +1,65 @@
 # STE-Academic-Writing
 
-A Codex Skill that integrates academic paper writing methodology with Simplified Technical English (STE) principles.
+A Codex Skill that integrates academic paper writing methodology with Simplified Technical English (STE) principles for CS / AI / ML / IR papers.
 
-## What This Skill Does
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Platform](https://img.shields.io/badge/platform-Codex-purple)
+![Modes](https://img.shields.io/badge/modes-4-green)
+![Language](https://img.shields.io/badge/language-English-orange)
 
-This skill helps you write, rewrite, polish, and review academic papers in computer science, AI, machine learning, and information retrieval. It combines two complementary frameworks:
+## Table of Contents
+
+- [Overview](#overview)
+- [Quick Start](#quick-start)
+- [Four Modes](#four-modes)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Directory Structure](#directory-structure)
+- [Integration Design](#integration-design)
+- [Testing](#testing)
+- [License](#license)
+- [Attribution](#attribution)
+
+## Overview
+
+Writing an academic paper involves two layers: **what to say** (structure, logic, evidence) and **how to say it** (clarity, precision, conciseness). Most tools address only one layer. This skill combines both:
 
 1. **Academic writing structure** — section-level templates, paragraph logic, claim-evidence alignment, and reviewer-facing presentation. Adapted from [Research Paper Writing Skills](https://github.com/Master-cai/Research-Paper-Writing-Skills), which is based on Prof. Peng Sida's open study notes.
 
 2. **Simplified Technical English** — vocabulary, verb, and sentence rules that remove ambiguity, redundancy, and AI slop. Adapted from [ASD-STE100 writing skill](https://github.com/kairin/000-0-ASD-STE100), which is an unofficial adaptation of the ASD-STE100 standard.
 
+STE rules are applied as a **language-layer supplement**, not a primary constraint. Academic accuracy, technical rigor, and domain conventions always take priority over language simplification.
+
+## Quick Start
+
+```bash
+# Clone and install
+git clone https://github.com/zhougang2020/STE-Academic-Writing.git
+cp -R STE-Academic-Writing ~/.agents/skills/
+```
+
+Then in Codex, just describe what you need:
+
+```
+Use $STE-Academic-Writing to polish my Introduction section.
+```
+
+The skill activates automatically when your task matches drafting, rewriting, polishing, or reviewing academic paper sections.
+
 ## Four Modes
+
+```mermaid
+graph LR
+    A[Research Content] -->|Draft| B[New Section]
+    B -->|Rewrite| C[Restructured Logic]
+    C -->|Polish| D[Simplified English]
+    D -->|Review| E[Findings Report]
+    style A fill:#e1f5fe
+    style B fill:#fff3e0
+    style C fill:#fce4ec
+    style D fill:#e8f5e9
+    style E fill:#f3e5f5
+```
 
 | Mode | Purpose | Changes Structure? | Changes Language? |
 |---|---|---|---|
@@ -19,12 +68,23 @@ This skill helps you write, rewrite, polish, and review academic papers in compu
 | Polish | Simplify English without changing meaning | No | Yes |
 | Review | Check logic, language, terminology | No (returns findings only) | No |
 
+### Protected Content (never modified)
+
+| Category | Examples |
+|---|---|
+| Math & LaTeX | `\equation`, `\alpha`, formulas |
+| Citations | `\cite{...}`, `[1]`, `(Smith et al., 2024)` |
+| Technical terms | BLEU, transformer, cross-entropy loss |
+| Author's claims | hypotheses, conclusions, definitions |
+| Experimental data | metrics, numbers, results tables |
+| Code identifiers | variable names, function names |
+
 ## Installation
 
-Copy the skill directory into your Codex skills folder:
+Copy the skill directory into your Codex skills folder (typically `~/.agents/skills/` or `$CODEX_HOME/skills/`):
 
 ```bash
-cp -R STE-Academic-Writing "$CODEX_HOME/skills/"
+cp -R STE-Academic-Writing ~/.agents/skills/
 ```
 
 ## Usage
@@ -78,8 +138,8 @@ STE-Academic-Writing/
     ├── paragraph-flow.md             # Paragraph flow and reverse outlining
     └── examples/
         ├── index.md                  # Example bank index
-        ├── abstract-template-a.md    # Challenge → Contribution template
-        ├── abstract-template-b.md    # Challenge → Insight → Contribution template
+        ├── abstract-template-a.md    # Challenge -> Contribution template
+        ├── abstract-template-b.md    # Challenge -> Insight -> Contribution template
         └── abstract-template-c.md    # Multiple Contributions template
 ```
 
@@ -132,5 +192,5 @@ MIT License. See [LICENSE](LICENSE) for details and derivative works notice.
 
 ## Attribution
 
-- Academic writing methodology: Prof. Peng Sida (彭思达)'s open study notes, adapted by Master-cai as Research Paper Writing Skills (MIT License).
+- Academic writing methodology: Prof. Peng Sida's open study notes, adapted by Master-cai as Research Paper Writing Skills (MIT License).
 - STE principles: ASD-STE100 writing skill by kairin (MIT License). ASD-STE100 is a registered EU trademark (No. 017966390) of ASD. This skill does not reproduce the standard.
